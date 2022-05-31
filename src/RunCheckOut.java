@@ -1,3 +1,9 @@
+/**
+ * Simple Shopping System
+ * Author: Jun Zhang
+ * Date: 31st May 2022
+ */
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,40 +15,58 @@ public class RunCheckOut {
         ArrayList<Good> bagList = new ArrayList<Good>();
         Bag bag = new Bag(bagList);
         Good good = null;
+        boolean finish = false;
         allGoods.readFile("/Users/troy/Desktop/Shopping_System/src/goods.csv");
 
-        System.out.println("Welcome to Troy's store!");
+        //switch by different input
+        System.out.println("Welcome to Troy's store! Type \"help\" for more information.");
         Scanner scanner = new Scanner(System.in);
-        boolean finish = false;
-
-
         while (!finish) {
             if (scanner.hasNextLine()) {
                 String input = scanner.nextLine();
-                if (input.equals("help")) {
-                    fHelp();
-                } else if (input.equals("list")) {
-                    fList(allGoods);
-                } else if (input.equals("add")) {
-                    fAdd(good, allGoods,bag);
-                    fBag(bag);
-                } else if (input.equals("del")) {
-                    fBag(bag);
-                    fDel(bag);
-                } else if (input.equals("bag")) {
-                    fBag(bag);
-                } else if (input.equals("check")) {
-                    fCheck(bag);
-                    finish = true;
+                switch (input) {
+                    case "help" -> fHelp();
+                    case "list" -> fList(allGoods);
+                    case "add" -> {
+                        fAdd(good, allGoods, bag);
+                        fBag(bag);
+                    }
+                    case "del" -> {
+                        fBag(bag);
+                        fDel(bag);
+                    }
+                    case "bag" -> fBag(bag);
+                    case "check" -> {
+                        fCheck(bag);
+                        finish = true;
+                    }
+                    case "sort" -> fCategory(allGoods);
                 }
             }
         }
     }
 
+    /**
+     * help
+     */
+    private static void fHelp() {
+        System.out.println("1.help,  2.list,  3.add,  4.del,  5.bag,  6.check,  7.sort");
+    }
+
+    /**
+     * List everything
+     * @param list the given list transfer by .csv file
+     */
     private static void fList(GoodList list) {
         System.out.println(list.toString());
     }
 
+    /**
+     * Function to adding good to bag
+     * @param g the given good
+     * @param ag the whole list
+     * @param b the bag
+     */
     private static void fAdd(Good g, GoodList ag, Bag b) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Type the good's name: ");
@@ -55,16 +79,16 @@ public class RunCheckOut {
             if (scan.hasNextLine()) {
                 String bl = scan.nextLine();
                 if (bl.equals("y")) {
-                    if (g == null) {
-                        System.out.println("opps!There's no good has been searched.");
-                    } else {
-                        b.addGood(g);
-                    }
+                    b.addGood(g);
                 }
             }
         }
     }
 
+    /**
+     * delete good from bag
+     * @param b bag
+     */
     private static void fDel(Bag b) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Type the good's number: ");
@@ -79,18 +103,43 @@ public class RunCheckOut {
         }
     }
 
+    /**
+     * list the bag
+     * @param b bag
+     */
     private static void fBag(Bag b) {
         System.out.println("=============The bag============");
         System.out.println(b.toString());
         System.out.println("\"check\" to check out\n");
     }
 
+    /**
+     * check out
+     * @param b bag
+     */
     private static void fCheck(Bag b) {
         b.calculate();
     }
 
-    private static void fHelp() {
-        System.out.println("1.help,2.list,3.add,4.del,5.bag,6.check");
+    /**
+     * sort all goods
+     * @param gl the all goods list
+     */
+    private static  void fCategory(GoodList gl) {
+        System.out.println("Type the category name: ");
+        ArrayList<Good> same = new ArrayList<Good>();
+        GoodList sameCat = new GoodList(same);
+        Scanner scan = new Scanner(System.in);
+        if (scan.hasNextLine()) {
+            String str = scan.nextLine();
+            for (int i = 0; i < gl.getGoodList().size(); i++) {
+                if (str.equals(gl.getGoodList().get(i).getgCategory())) {
+                    sameCat.getGoodList().add(gl.getGoodList().get(i));
+                }
+            }
+        }
+        System.out.println(sameCat.toString());
+
     }
 
 }

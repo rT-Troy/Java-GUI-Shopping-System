@@ -21,23 +21,6 @@ public class Bag {
     }
 
     /**
-     * add good to bag by searching name
-     * @param name the good's name
-     */
-    public void addGood(String name) {
-        boolean find = false;
-        for (int i = 0; i < shoppingBag.size(); i++) {
-            if (shoppingBag.get(i).getgName().equals(name)){
-                shoppingBag.remove(i);
-                find = true;
-            }
-        }
-        if (!find){
-            System.out.println("Oops, didn't find the matched good, please check again...");
-        }
-    }
-
-    /**
      * delete good from bag by bag-list ID
      * @param bagId bag-list ID
      */
@@ -55,7 +38,6 @@ public class Bag {
         }
         System.out.println("Total $" + total);
     }
-
 
     @Override
     public String toString() {

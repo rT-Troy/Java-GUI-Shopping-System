@@ -42,18 +42,6 @@ public class GoodList {
         }
     }
 
-    /**
-     * List all goods
-     */
-    public void listAll() {
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < goodList.size(); i++) {
-            sb.append(goodList.get(i).toString());
-            sb.append("\n");
-        }
-        System.out.println(sb);
-    }
-
     public Good search(String name) {
         int n = -1;
         for (int i = 0; i < goodList.size(); i++) {
@@ -68,8 +56,8 @@ public class GoodList {
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < goodList.size(); i++) {
-            sb.append(goodList.get(i));
+        for (Good good : goodList) {
+            sb.append(good);
             sb.append("\n");
         }
         return sb.toString();
