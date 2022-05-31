@@ -7,32 +7,34 @@ public class GoodList {
 
     ArrayList<Good> goodList;
 
-    public GoodList(ArrayList<Good> list){
+    public GoodList(ArrayList<Good> list) {
         goodList = list;
     }
 
-    public void readFile(String fileName){
+    public ArrayList<Good> getGoodList() {
+        return goodList;
+    }
+
+    public void readFile(String fileName) {
         File shopFile = new File(fileName);
         Scanner scanner;
-        try{
+        try {
             scanner = new Scanner(shopFile);
             scanner.useDelimiter(",");
             int id;
             String name;
             double price;
             String category;
-            while (scanner.hasNext()){
+            while (scanner.hasNext()) {
                 String[] inputArray = scanner.nextLine().split(",");
                 id = Integer.parseInt(inputArray[0]);
                 name = inputArray[1];
                 price = Double.parseDouble(inputArray[2]);
                 category = inputArray[3];
-                goodList.add(new Good(id,name,price,category));
-                scanner.close();
+                goodList.add(new Good(id, name, price, category));
             }
-
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
