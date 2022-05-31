@@ -42,8 +42,7 @@ public class Bag {
      * @param bagId bag-list ID
      */
     public void delGood(int bagId){
-        Good good = shoppingBag.get(bagId-1);
-        shoppingBag.remove(good);
+        shoppingBag.remove(bagId-1);
     }
 
     /**
@@ -54,11 +53,9 @@ public class Bag {
         for (int i = 0; i < shoppingBag.size(); i++) {
             total += shoppingBag.get(i).getgPrice();
         }
+        System.out.println("Total $" + total);
     }
 
-    public void voucher(String code) {
-
-    }
 
     @Override
     public String toString() {
