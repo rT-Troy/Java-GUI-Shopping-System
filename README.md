@@ -6,4 +6,3 @@
 3. add good to bag
 4. remove good from bag
 5. check out to get total paid
-6. 
