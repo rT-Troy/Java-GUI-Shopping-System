@@ -1,49 +1,74 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Bag {
 
-    private int numId;
-    private HashMap<Integer,ArrayList<Good>> bag;
+    private ArrayList<Good> shoppingBag;
 
-    public Bag(int id, HashMap<Integer,ArrayList<Good>> goods){
-        goods = bag;
+    public Bag(ArrayList<Good> bag) {
+        shoppingBag = bag;
     }
 
-    public int getNumId() {
-        return numId;
+    public ArrayList<Good> getShoppingBag() {
+        return shoppingBag;
     }
 
-    public HashMap<Integer, ArrayList<Good>> getBag() {
-        return bag;
-    }
-
-    /*
-    add good to bag
+    /**
+     * add good to bag
+     * @param good the good
      */
-/*    public void addGood(int id, String name, double price, String category){
-        Good good = new Good(id, name, price, category);
-        bag.add(good);
-    }*/
+    public void addGood(Good good) {
+        shoppingBag.add(good);
+    }
 
-    /*
-    delete good from bag by ArrayList id
+    /**
+     * add good to bag by searching name
+     * @param name the good's name
      */
-/*    public void delGood(int ListId){
-        Good good = bag.get(ListId);
-        bag.remove(good);
-    }*/
+    public void addGood(String name) {
+        boolean find = false;
+        for (int i = 0; i < shoppingBag.size(); i++) {
+            if (shoppingBag.get(i).getgName().equals(name)){
+                shoppingBag.remove(i);
+                find = true;
+            }
+        }
+        if (!find){
+            System.out.println("Oops, didn't find the matched good, please check again...");
+        }
+    }
+
+    /**
+     * delete good from bag by bag-list ID
+     * @param bagId bag-list ID
+     */
+    public void delGood(int bagId){
+        Good good = shoppingBag.get(bagId-1);
+        shoppingBag.remove(good);
+    }
+
+    /**
+     * get the total price
+     */
+    public void calculate() {
+        double total = 0.0;
+        for (int i = 0; i < shoppingBag.size(); i++) {
+            total += shoppingBag.get(i).getgPrice();
+        }
+    }
+
+    public void voucher(String code) {
+
+    }
 
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < bag.size(); i++) {
-            sb.append(i);
-            sb.append(bag.get(i).toString());
+        for (int i = 0; i < shoppingBag.size(); i++) {
+            sb.append(i+1);
+            sb.append(shoppingBag.get(i).toString());
             sb.append("\n");
         }
-        String str = sb.toString();
-        return str;
+        return sb.toString();
     }
 
 }

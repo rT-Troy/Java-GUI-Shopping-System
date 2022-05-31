@@ -29,4 +29,13 @@ public class Good {
         return gCategory;
     }
 
+    @Override
+    public String toString() {
+        return "Good{" +
+                "gId=" + gId +
+                ", gName='" + gName + '\'' +
+                ", gPrice=" + gPrice +
+                ", gCategory='" + gCategory + '\'' +
+                '}';
+    }
 }

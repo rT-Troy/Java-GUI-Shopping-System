@@ -15,6 +15,10 @@ public class GoodList {
         return goodList;
     }
 
+    /**
+     * read the file and generate all good list
+     * @param fileName file name (xx.csv)
+     */
     public void readFile(String fileName) {
         File shopFile = new File(fileName);
         Scanner scanner;
@@ -38,5 +42,36 @@ public class GoodList {
         }
     }
 
+    /**
+     * List all goods
+     */
+    public void listAll() {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < goodList.size(); i++) {
+            sb.append(goodList.get(i).toString());
+            sb.append("\n");
+        }
+        System.out.println(sb);
+    }
 
+    public Good search(String name) {
+        int n = -1;
+        for (int i = 0; i < goodList.size(); i++) {
+            if(goodList.get(i).getgName().equals(name)){
+                n = i;
+                break;
+            }
+        }
+        return goodList.get(n);
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < goodList.size(); i++) {
+            sb.append(goodList.get(i));
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }
