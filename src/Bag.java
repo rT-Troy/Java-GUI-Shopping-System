@@ -33,8 +33,8 @@ public class Bag {
      */
     public void calculate() {
         double total = 0.0;
-        for (int i = 0; i < shoppingBag.size(); i++) {
-            total += shoppingBag.get(i).getgPrice();
+        for (Good good : shoppingBag) {
+            total += good.getgPrice();
         }
         System.out.println("Total $" + total);
     }
