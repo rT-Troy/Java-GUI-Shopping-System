@@ -1,34 +1,38 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Bag {
 
     private int numId;
-    private ArrayList<Good> bag;
+    private HashMap<Integer,ArrayList<Good>> bag;
 
-
-    public Bag(ArrayList<Good> shoppingBag){
-        bag = shoppingBag;
+    public Bag(int id, HashMap<Integer,ArrayList<Good>> goods){
+        goods = bag;
     }
 
-    public ArrayList<Good> getBag() {
+    public int getNumId() {
+        return numId;
+    }
+
+    public HashMap<Integer, ArrayList<Good>> getBag() {
         return bag;
     }
 
     /*
     add good to bag
      */
-    public void addGood(int id, String name, double price, String category){
+/*    public void addGood(int id, String name, double price, String category){
         Good good = new Good(id, name, price, category);
         bag.add(good);
-    }
+    }*/
 
     /*
     delete good from bag by ArrayList id
      */
-    public void delGood(int ListId){
+/*    public void delGood(int ListId){
         Good good = bag.get(ListId);
         bag.remove(good);
-    }
+    }*/
 
     @Override
     public String toString() {
@@ -41,4 +45,5 @@ public class Bag {
         String str = sb.toString();
         return str;
     }
+
 }

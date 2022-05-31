@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class GoodList {
 
-    ArrayList<Good> goodList;
+    private ArrayList<Good> goodList;
 
     public GoodList(ArrayList<Good> list) {
         goodList = list;
