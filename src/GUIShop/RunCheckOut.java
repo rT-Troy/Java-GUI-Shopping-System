@@ -3,6 +3,7 @@
  * Author: Jun Zhang
  * Date: 31st May 2022
  */
+package GUIShop;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,7 +17,7 @@ public class RunCheckOut {
         Bag bag = new Bag(bagList);
         Good good = null;
         boolean finish = false;
-        allGoods.readFile("/Users/troy/Desktop/Shopping_System/src/goods.csv");
+        allGoods.readFile("/Users/troy/Desktop/Shopping_System/src/ComShop/goods.csv");
 
         //switch by different input
         System.out.println("Welcome to Troy's store! Type \"help\" for more information.");

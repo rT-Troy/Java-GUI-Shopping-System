@@ -1,3 +1,4 @@
+package GUIShop;
 
 public class Good {
 

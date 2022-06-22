@@ -1,3 +1,5 @@
+package ComShop;
+
 import java.util.ArrayList;
 
 public class Bag {
