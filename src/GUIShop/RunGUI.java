@@ -17,18 +17,21 @@ public class RunGUI {
         boolean finish = false;
         allGoods.readFile("/Users/troy/Desktop/Shopping_System/src/ComShop/goods.csv");
 
+        Box mainBox = Box.createVerticalBox();
+        Box firstLine = Box.createHorizontalBox();
+        //Box mContBox = Box.createHorizontalBox();
+        Box listBox = Box.createVerticalBox();
+        Box bagBox = Box.createVerticalBox();
+        Box perListBox = Box.createHorizontalBox();
+        Box perBagBox = Box.createHorizontalBox();
+        ArrayList<Box> GoodsBox = new ArrayList<Box>();
+
 
         //Start
         JFrame frame = new JFrame("Shopping System");
-        JPanel listPanel = new JPanel();
-        JPanel BagPanel = new JPanel();
-        JPanel cards = new JPanel(new CardLayout());
-        JTextField searchText = new JTextField();
+        JTextField searchText = createBoxTextField();
+        searchText.setText("Type to search...");
         JButton searchButton = new JButton("Search");
-        searchText.setColumns(20);
-        searchText.setText("please tap here to search:");
-
-
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -36,21 +39,43 @@ public class RunGUI {
             }
         });
 
-        listPanel.add(new JLabel("Welcome!"));
-        listPanel.add(searchText);
-        listPanel.add(searchButton);
+        firstLine.add(new JLabel("Welcome!"));
+        firstLine.add(searchText);
+        firstLine.add(searchButton);
 
-        cards.add(listPanel,"list");
-        cards.add(BagPanel,"bag");
-        CardLayout c1 = (CardLayout)cards.getLayout();
-        c1.show(cards,"list");
-        //c1.show(cards,"bag");
 
-        frame.add(cards);
+        for (int i = 0; i < allGoods.getGoodList().size(); i++) {
+            perListBox.add(new JLabel("name:" + allGoods.getGoodList().get(i).getgName()));
+            perListBox.add(Box.createHorizontalStrut(5));
+            perListBox.add(new JLabel("Price:" + allGoods.getGoodList().get(i).getgPrice()));
+            perListBox.add(Box.createHorizontalStrut(5));
+            perListBox.add(new JLabel("Category:" + allGoods.getGoodList().get(i).getgCategory()));
+
+            listBox.add(perListBox);
+            listBox.add(Box.createVerticalStrut(10));
+        }
+        //bagBox.add(perBagBox);
+
+        //mContBox.add(bagBox);
+
+        mainBox.add(Box.createVerticalStrut(10));
+        mainBox.add(firstLine);
+        mainBox.add(listBox);
+        //mainBox.add(mContBox);
+
+
+        frame.add(mainBox);
         frame.setBounds(200,200,700,500);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
+    private static JTextField createBoxTextField() {
+        JTextField textField = new JTextField(20);
+        textField.setMaximumSize(textField.getPreferredSize());
+        return textField;
+    }
+
 
 
 }
