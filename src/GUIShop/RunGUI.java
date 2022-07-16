@@ -22,9 +22,9 @@ public class RunGUI {
         //Box mContBox = Box.createHorizontalBox();
         Box listBox = Box.createVerticalBox();
         Box bagBox = Box.createVerticalBox();
-        Box perListBox = Box.createHorizontalBox();
         Box perBagBox = Box.createHorizontalBox();
-        ArrayList<Box> GoodsBox = new ArrayList<Box>();
+        ArrayList<Box> listBagArrayList = new ArrayList<Box>();
+        ArrayList<Box> listBoxArrayList = new ArrayList<Box>();
 
 
         //Start
@@ -45,24 +45,28 @@ public class RunGUI {
 
 
         for (int i = 0; i < allGoods.getGoodList().size(); i++) {
-            perListBox.add(new JLabel("name:" + allGoods.getGoodList().get(i).getgName()));
+            Box perListBox = Box.createHorizontalBox();
+            JLabel nameLabel = new JLabel();
+            JLabel priceLabel = new JLabel();
+            nameLabel.setText(allGoods.getGoodList().get(i).getgName());
+            priceLabel.setText(allGoods.getGoodList().get(i).getgPrice()+" $");
+            nameLabel.setFont(new Font("good", Font.ITALIC,20));
+            priceLabel.setFont(new Font("good2", Font.PLAIN,15));
+            nameLabel.setHorizontalAlignment(JLabel.LEFT);
+            perListBox.add(nameLabel);
+            perListBox.add(Box.createHorizontalStrut(10));
+            perListBox.add(priceLabel);
             perListBox.add(Box.createHorizontalStrut(5));
-            perListBox.add(new JLabel("Price:" + allGoods.getGoodList().get(i).getgPrice()));
-            perListBox.add(Box.createHorizontalStrut(5));
-            perListBox.add(new JLabel("Category:" + allGoods.getGoodList().get(i).getgCategory()));
-
-            listBox.add(perListBox);
-            listBox.add(Box.createVerticalStrut(10));
+            listBoxArrayList.add(perListBox);
         }
-        //bagBox.add(perBagBox);
-
-        //mContBox.add(bagBox);
+        for (int i = 0; i < listBoxArrayList.size(); i++) {
+            listBox.add(listBoxArrayList.get(i));
+            listBox.add(Box.createVerticalStrut(5));
+        }
 
         mainBox.add(Box.createVerticalStrut(10));
         mainBox.add(firstLine);
         mainBox.add(listBox);
-        //mainBox.add(mContBox);
-
 
         frame.add(mainBox);
         frame.setBounds(200,200,700,500);
