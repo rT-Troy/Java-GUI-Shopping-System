@@ -21,10 +21,15 @@ public class RunGUI {
         Box mainBox = Box.createVerticalBox();
         Box firstLine = Box.createHorizontalBox();
         Box mContBox = Box.createHorizontalBox();
+        JLabel listLabel = new JLabel("list");
+        JLabel bagLabel = new JLabel("bag");
+        JPanel mainListPanel = new JPanel();
+        JPanel mainBagPanel = new JPanel();
         Box listBox = Box.createVerticalBox();
         Box bagBox = Box.createVerticalBox();
         ArrayList<Box> listBagArrayList = new ArrayList<Box>();
         ArrayList<Box> listBoxArrayList = new ArrayList<Box>();
+        ArrayList<JPanel> bagPanelArrayList = new ArrayList<JPanel>();
 
 
         //Start
@@ -43,12 +48,10 @@ public class RunGUI {
         firstLine.add(new JLabel("Welcome!"));
         firstLine.add(searchText);
         firstLine.add(searchButton);
-
-        //bag box
-        Box perBagBox = Box.createHorizontalBox();
-        JPanel perBagPanel = new JPanel();
+        
 
         //list box
+        listBox.add(listLabel);
         for (int i = 0; i < allGoods.getGoodList().size(); i++) {
             Box perListBox = Box.createHorizontalBox();
             JPanel perListPanel = new JPanel();
@@ -61,12 +64,7 @@ public class RunGUI {
             nameLabel.setFont(new Font("good", Font.ITALIC,20));
             priceLabel.setFont(new Font("good2", Font.PLAIN,15));
             JButton perAdd = new JButton("+");
-            perAdd.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    bag
-                }
-            });
+            //per good make a line
             perListPanel.add(nameLabel);
             perListPanel.add(Box.createHorizontalStrut(10));
             perListPanel.add(priceLabel);
@@ -77,18 +75,34 @@ public class RunGUI {
             perListPanel.setBackground(Color.gray);
             perListBox.add(perListPanel);
             listBoxArrayList.add(perListBox);
+
+            perAdd.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    bagPanelArrayList.add(perListPanel);
+                }
+            });
         }for (int i = 0; i < listBoxArrayList.size(); i++) {
             listBox.add(listBoxArrayList.get(i));
             listBox.add(Box.createVerticalStrut(5));
         }
+        mainListPanel.add(listBox);
 
+        //bag box
+        Box perBagBox = Box.createHorizontalBox();
+        perBagBox.add(bagLabel);
+        for (int i = 0; i < bagPanelArrayList.size(); i++) {
+            perBagBox.add(bagPanelArrayList.get(i));
+            bagBox.add(perBagBox);
+        }
+        
 
         //set in
         mainBox.add(Box.createVerticalStrut(10));
         mainBox.add(firstLine);
-        mContBox.add(listBox);
+        mContBox.add(mainListPanel);
         mContBox.add(Box.createHorizontalStrut(30));
-        mContBox.add(bagBox);
+        mContBox.add(mainBagPanel);
         mainBox.add(mContBox);
         frame.add(mainBox);
         frame.setBounds(200,200,700,500);
