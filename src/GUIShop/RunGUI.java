@@ -19,12 +19,13 @@ public class RunGUI {
 
         Box mainBox = Box.createVerticalBox();
         Box firstLine = Box.createHorizontalBox();
-        //Box mContBox = Box.createHorizontalBox();
+        Box mContBox = Box.createHorizontalBox();
         Box listBox = Box.createVerticalBox();
         Box bagBox = Box.createVerticalBox();
         Box perBagBox = Box.createHorizontalBox();
         ArrayList<Box> listBagArrayList = new ArrayList<Box>();
         ArrayList<Box> listBoxArrayList = new ArrayList<Box>();
+        JPanel listPanel = new JPanel();
 
 
         //Start
@@ -63,10 +64,14 @@ public class RunGUI {
             listBox.add(listBoxArrayList.get(i));
             listBox.add(Box.createVerticalStrut(5));
         }
+        listBox.setBackground(Color.green);
 
         mainBox.add(Box.createVerticalStrut(10));
         mainBox.add(firstLine);
-        mainBox.add(listBox);
+        mContBox.add(listBox);
+        mContBox.add(Box.createHorizontalStrut(30));
+        mContBox.add(bagBox);
+        mainBox.add(mContBox);
 
         frame.add(mainBox);
         frame.setBounds(200,200,700,500);
