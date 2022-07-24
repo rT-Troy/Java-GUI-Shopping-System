@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class RunGUI {
 
+
     public static void main(String[] args) {
         ArrayList<Good> goodList = new ArrayList<Good>();
         GoodList allGoods = new GoodList(goodList);
@@ -22,10 +23,8 @@ public class RunGUI {
         Box mContBox = Box.createHorizontalBox();
         Box listBox = Box.createVerticalBox();
         Box bagBox = Box.createVerticalBox();
-        Box perBagBox = Box.createHorizontalBox();
         ArrayList<Box> listBagArrayList = new ArrayList<Box>();
         ArrayList<Box> listBoxArrayList = new ArrayList<Box>();
-        JPanel listPanel = new JPanel();
 
 
         //Start
@@ -40,43 +39,57 @@ public class RunGUI {
             }
         });
 
+        //first line
         firstLine.add(new JLabel("Welcome!"));
         firstLine.add(searchText);
         firstLine.add(searchButton);
 
+        //bag box
+        Box perBagBox = Box.createHorizontalBox();
+        JPanel perBagPanel = new JPanel();
 
+        //list box
         for (int i = 0; i < allGoods.getGoodList().size(); i++) {
             Box perListBox = Box.createHorizontalBox();
             JPanel perListPanel = new JPanel();
             JLabel nameLabel = new JLabel();
             JLabel priceLabel = new JLabel();
+            SpinnerModel spin = new SpinnerNumberModel(1,1,99,1);
+            JSpinner spinner = new JSpinner(spin);
             nameLabel.setText(allGoods.getGoodList().get(i).getgName());
             priceLabel.setText(allGoods.getGoodList().get(i).getgPrice()+" $");
             nameLabel.setFont(new Font("good", Font.ITALIC,20));
             priceLabel.setFont(new Font("good2", Font.PLAIN,15));
             JButton perAdd = new JButton("+");
+            perAdd.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    bag
+                }
+            });
             perListPanel.add(nameLabel);
             perListPanel.add(Box.createHorizontalStrut(10));
             perListPanel.add(priceLabel);
             perListPanel.add(Box.createHorizontalStrut(5));
+            perListPanel.add(spinner);
+            perListPanel.add(Box.createHorizontalStrut(5));
             perListPanel.add(perAdd);
             perListPanel.setBackground(Color.gray);
-
             perListBox.add(perListPanel);
             listBoxArrayList.add(perListBox);
-        }
-        for (int i = 0; i < listBoxArrayList.size(); i++) {
+        }for (int i = 0; i < listBoxArrayList.size(); i++) {
             listBox.add(listBoxArrayList.get(i));
             listBox.add(Box.createVerticalStrut(5));
         }
 
+
+        //set in
         mainBox.add(Box.createVerticalStrut(10));
         mainBox.add(firstLine);
         mContBox.add(listBox);
         mContBox.add(Box.createHorizontalStrut(30));
         mContBox.add(bagBox);
         mainBox.add(mContBox);
-
         frame.add(mainBox);
         frame.setBounds(200,200,700,500);
         frame.setVisible(true);
