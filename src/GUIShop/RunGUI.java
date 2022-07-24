@@ -47,24 +47,28 @@ public class RunGUI {
 
         for (int i = 0; i < allGoods.getGoodList().size(); i++) {
             Box perListBox = Box.createHorizontalBox();
+            JPanel perListPanel = new JPanel();
             JLabel nameLabel = new JLabel();
             JLabel priceLabel = new JLabel();
             nameLabel.setText(allGoods.getGoodList().get(i).getgName());
             priceLabel.setText(allGoods.getGoodList().get(i).getgPrice()+" $");
             nameLabel.setFont(new Font("good", Font.ITALIC,20));
             priceLabel.setFont(new Font("good2", Font.PLAIN,15));
-            nameLabel.setHorizontalAlignment(JLabel.LEFT);
-            perListBox.add(nameLabel);
-            perListBox.add(Box.createHorizontalStrut(10));
-            perListBox.add(priceLabel);
-            perListBox.add(Box.createHorizontalStrut(5));
+            JButton perAdd = new JButton("+");
+            perListPanel.add(nameLabel);
+            perListPanel.add(Box.createHorizontalStrut(10));
+            perListPanel.add(priceLabel);
+            perListPanel.add(Box.createHorizontalStrut(5));
+            perListPanel.add(perAdd);
+            perListPanel.setBackground(Color.gray);
+
+            perListBox.add(perListPanel);
             listBoxArrayList.add(perListBox);
         }
         for (int i = 0; i < listBoxArrayList.size(); i++) {
             listBox.add(listBoxArrayList.get(i));
             listBox.add(Box.createVerticalStrut(5));
         }
-        listBox.setBackground(Color.green);
 
         mainBox.add(Box.createVerticalStrut(10));
         mainBox.add(firstLine);
