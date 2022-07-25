@@ -14,6 +14,10 @@ public class Good {
         gCategory = category;
     }
 
+    public int getgId() {
+        return gId;
+    }
+
     public String getgName() {
         return gName;
     }

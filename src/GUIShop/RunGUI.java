@@ -8,8 +8,7 @@ import java.util.ArrayList;
 
 public class RunGUI {
 
-
-    public static void main(String[] args) {
+    public RunGUI(){
         ArrayList<Good> goodList = new ArrayList<Good>();
         GoodList allGoods = new GoodList(goodList);
         ArrayList<Good> bagList = new ArrayList<Good>();
@@ -18,8 +17,9 @@ public class RunGUI {
         boolean finish = false;
         allGoods.readFile("/Users/troy/Desktop/Shopping_System/src/ComShop/goods.csv");
 
-        Box mainBox = Box.createVerticalBox();
         Box firstLine = Box.createHorizontalBox();
+
+        Box mainBox = Box.createVerticalBox();
         Box mContBox = Box.createHorizontalBox();
         JLabel listLabel = new JLabel("list");
         JLabel bagLabel = new JLabel("bag");
@@ -27,9 +27,13 @@ public class RunGUI {
         JPanel mainBagPanel = new JPanel();
         Box listBox = Box.createVerticalBox();
         Box bagBox = Box.createVerticalBox();
-        ArrayList<Box> listBagArrayList = new ArrayList<Box>();
+        ArrayList<Box> bagBoxArrayList = new ArrayList<Box>();
         ArrayList<Box> listBoxArrayList = new ArrayList<Box>();
         ArrayList<JPanel> bagPanelArrayList = new ArrayList<JPanel>();
+
+        JLabel po = new JLabel();
+        JPanel perBagPanel = new JPanel();
+
 
 
         //Start
@@ -48,8 +52,9 @@ public class RunGUI {
         firstLine.add(new JLabel("Welcome!"));
         firstLine.add(searchText);
         firstLine.add(searchButton);
-        
 
+        Box perBagBox = Box.createHorizontalBox();
+        perBagBox.add(bagLabel);
         //list box
         listBox.add(listLabel);
         for (int i = 0; i < allGoods.getGoodList().size(); i++) {
@@ -57,55 +62,71 @@ public class RunGUI {
             JPanel perListPanel = new JPanel();
             JLabel nameLabel = new JLabel();
             JLabel priceLabel = new JLabel();
-            SpinnerModel spin = new SpinnerNumberModel(1,1,99,1);
-            JSpinner spinner = new JSpinner(spin);
+            //SpinnerModel spin = new SpinnerNumberModel(1,1,99,1);
+            //JSpinner spinner = new JSpinner(spin);
             nameLabel.setText(allGoods.getGoodList().get(i).getgName());
             priceLabel.setText(allGoods.getGoodList().get(i).getgPrice()+" $");
             nameLabel.setFont(new Font("good", Font.ITALIC,20));
             priceLabel.setFont(new Font("good2", Font.PLAIN,15));
-            JButton perAdd = new JButton("+");
+            JButton perAdd = new JButton("+"+allGoods.getGoodList().get(i).getgId());
             //per good make a line
             perListPanel.add(nameLabel);
             perListPanel.add(Box.createHorizontalStrut(10));
             perListPanel.add(priceLabel);
             perListPanel.add(Box.createHorizontalStrut(5));
-            perListPanel.add(spinner);
+            //perListPanel.add(spinner);
             perListPanel.add(Box.createHorizontalStrut(5));
             perListPanel.add(perAdd);
             perListPanel.setBackground(Color.gray);
+            perListPanel.setName(""+i);
             perListBox.add(perListPanel);
             listBoxArrayList.add(perListBox);
 
             perAdd.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    bagPanelArrayList.add(perListPanel);
+                    JLabel nameLabel = new JLabel();
+                    JLabel priceLabel = new JLabel();
+                    nameLabel.setText(allGoods.getGoodList().get(Integer.parseInt(perListPanel.getName())).getgName());
+                    priceLabel.setText(allGoods.getGoodList().get(Integer.parseInt(perListPanel.getName())).getgPrice()+" $");
+                    nameLabel.setFont(new Font("good", Font.ITALIC,20));
+                    priceLabel.setFont(new Font("good2", Font.PLAIN,15));
+                    perBagPanel.add(nameLabel);
+                    perBagPanel.add(Box.createHorizontalStrut(10));
+                    perBagPanel.add(priceLabel);
+                    perBagPanel.add(Box.createHorizontalStrut(5));
+                    perBagPanel.setBackground(Color.gray);
+
+                    //po.setText(allGoods.getGoodList().get(Integer.parseInt(perListPanel.getName())).getgName());
                 }
             });
         }for (int i = 0; i < listBoxArrayList.size(); i++) {
             listBox.add(listBoxArrayList.get(i));
             listBox.add(Box.createVerticalStrut(5));
         }
-        mainListPanel.add(listBox);
 
-        //bag box
-        Box perBagBox = Box.createHorizontalBox();
-        perBagBox.add(bagLabel);
-        for (int i = 0; i < bagPanelArrayList.size(); i++) {
-            perBagBox.add(bagPanelArrayList.get(i));
-            bagBox.add(perBagBox);
+        perBagBox.add(perBagPanel);
+        bagBoxArrayList.add(perBagBox);
+        for (int i = 0; i < bagBoxArrayList.size(); i++) {
+            bagBox.add(bagBoxArrayList.get(i));
+            bagBox.add(Box.createVerticalStrut(5));
         }
-        
+
+        perBagBox.add(po);
+        bagBox.add(perBagBox);
+        mainListPanel.add(listBox);
+        mainBagPanel.add(bagBox);
+
 
         //set in
         mainBox.add(Box.createVerticalStrut(10));
         mainBox.add(firstLine);
         mContBox.add(mainListPanel);
-        mContBox.add(Box.createHorizontalStrut(30));
+        mContBox.add(Box.createHorizontalStrut(10));
         mContBox.add(mainBagPanel);
         mainBox.add(mContBox);
         frame.add(mainBox);
-        frame.setBounds(200,200,700,500);
+        frame.setBounds(200,200,1200,500);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -116,6 +137,8 @@ public class RunGUI {
         return textField;
     }
 
-
+    public static void main(String[] args) {
+        new RunGUI();
+    }
 
 }
