@@ -14,6 +14,7 @@ public class RunGUI {
         ArrayList<Good> bagList = new ArrayList<Good>();
         Bag bag = new Bag(bagList);
         Good good = null;
+        boolean getFirst = false;
         boolean finish = false;
         allGoods.readFile("/Users/troy/Desktop/Shopping_System/src/ComShop/goods.csv");
 
@@ -32,7 +33,6 @@ public class RunGUI {
         ArrayList<JPanel> bagPanelArrayList = new ArrayList<JPanel>();
 
         JLabel po = new JLabel();
-        JPanel perBagPanel = new JPanel();
 
 
 
@@ -53,8 +53,6 @@ public class RunGUI {
         firstLine.add(searchText);
         firstLine.add(searchButton);
 
-        Box perBagBox = Box.createHorizontalBox();
-        perBagBox.add(bagLabel);
         //list box
         listBox.add(listLabel);
         for (int i = 0; i < allGoods.getGoodList().size(); i++) {
@@ -85,22 +83,9 @@ public class RunGUI {
             perAdd.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    JLabel nameLabel = new JLabel();
-                    JLabel priceLabel = new JLabel();
-                    nameLabel.setText(allGoods.getGoodList().get(Integer.parseInt(perListPanel.getName())).getgName());
-                    priceLabel.setText(allGoods.getGoodList().get(Integer.parseInt(perListPanel.getName())).getgPrice()+" $");
-                    nameLabel.setFont(new Font("good", Font.ITALIC,20));
-                    priceLabel.setFont(new Font("good2", Font.PLAIN,15));
-                    perBagPanel.add(nameLabel);
-                    perBagPanel.add(Box.createHorizontalStrut(10));
-                    perBagPanel.add(priceLabel);
-                    perBagPanel.add(Box.createHorizontalStrut(5));
-                    perBagPanel.setBackground(Color.gray);
-                    perBagBox.add(perBagPanel);
-                    bagBoxArrayList.add(perBagBox);
-                    po.setText(allGoods.getGoodList().get(Integer.parseInt(perListPanel.getName())).getgName());
-                    bagBox.add(bagBoxArrayList.get(bagBoxArrayList.size()-1));
-                    bagBox.add(Box.createVerticalStrut(5));
+                    bag.addGood(allGoods.getGoodList().get(Integer.parseInt(perListPanel.getName())));
+                    bagLabel.setText(bag.getShoppingBag().toString());
+
                 }
             });
         }for (int i = 0; i < listBoxArrayList.size(); i++) {
@@ -108,14 +93,39 @@ public class RunGUI {
             listBox.add(Box.createVerticalStrut(5));
         }
 
-
-
-        perBagBox.add(po);
-        bagBox.add(perBagBox);
-        for (int i = 0; i < bagBoxArrayList.size(); i++) {
+        //bag
+        bagBox.add(bagLabel);
+        for (int i = 0; i < bag.getShoppingBag().size(); i++) {
+            Box perBagBox = Box.createHorizontalBox();
+            JPanel perBagPanel = new JPanel();
+            JLabel nameLabel = new JLabel();
+            JLabel priceLabel = new JLabel();
+            //SpinnerModel spin = new SpinnerNumberModel(1,1,99,1);
+            //JSpinner spinner = new JSpinner(spin);
+            nameLabel.setText(bag.getShoppingBag().get(i).getgName());
+            priceLabel.setText(bag.getShoppingBag().get(i).getgPrice()+" $");
+            nameLabel.setFont(new Font("good", Font.ITALIC,20));
+            priceLabel.setFont(new Font("good2", Font.PLAIN,15));
+            //per good make a line
+            perBagPanel.add(nameLabel);
+            perBagPanel.add(Box.createHorizontalStrut(10));
+            perBagPanel.add(priceLabel);
+            perBagPanel.add(Box.createHorizontalStrut(5));
+            perBagPanel.setBackground(Color.gray);
+            perBagPanel.setName(""+i);
+            perBagBox.add(perBagPanel);
+            bagBoxArrayList.add(perBagBox);
+        }for (int i = 0; i < bagBoxArrayList.size(); i++) {
             bagBox.add(bagBoxArrayList.get(i));
             bagBox.add(Box.createVerticalStrut(5));
         }
+
+
+
+
+
+
+
         mainListPanel.add(listBox);
         mainBagPanel.add(bagBox);
 
