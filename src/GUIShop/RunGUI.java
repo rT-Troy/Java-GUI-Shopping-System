@@ -28,11 +28,11 @@ public class RunGUI {
         JPanel mainBagPanel = new JPanel();
         Box listBox = Box.createVerticalBox();
         Box bagBox = Box.createVerticalBox();
-        ArrayList<Box> bagBoxArrayList = new ArrayList<Box>();
         ArrayList<Box> listBoxArrayList = new ArrayList<Box>();
         ArrayList<JPanel> bagPanelArrayList = new ArrayList<JPanel>();
 
-        JLabel po = new JLabel();
+        JLabel bnameLabel = new JLabel();
+        JLabel bpriceLabel = new JLabel();
 
 
 
@@ -73,7 +73,7 @@ public class RunGUI {
             perListPanel.add(priceLabel);
             perListPanel.add(Box.createHorizontalStrut(5));
             //perListPanel.add(spinner);
-            perListPanel.add(Box.createHorizontalStrut(5));
+            //perListPanel.add(Box.createHorizontalStrut(5));
             perListPanel.add(perAdd);
             perListPanel.setBackground(Color.gray);
             perListPanel.setName(""+i);
@@ -83,8 +83,39 @@ public class RunGUI {
             perAdd.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    JPanel perBagPanel = new JPanel();
+                    Box perBagBox = Box.createHorizontalBox();
+                    ArrayList<Box> bagBoxArrayList = new ArrayList<Box>();
+
                     bag.addGood(allGoods.getGoodList().get(Integer.parseInt(perListPanel.getName())));
-                    bagLabel.setText(bag.getShoppingBag().toString());
+                    //bagLabel.setText(bag.getShoppingBag().toString());
+                    bnameLabel.setText(bag.getShoppingBag().get(bag.getShoppingBag().size()-1).getgName());
+                    bpriceLabel.setText(bag.getShoppingBag().get(bag.getShoppingBag().size()-1).getgPrice()+" $");
+                    bnameLabel.setFont(new Font("good", Font.ITALIC,20));
+                    bpriceLabel.setFont(new Font("good2", Font.PLAIN,15));
+                    //per good make a line
+                    perBagPanel.add(bnameLabel);
+                    perBagPanel.add(Box.createHorizontalStrut(10));
+                    perBagPanel.add(bpriceLabel);
+                    perBagPanel.add(Box.createHorizontalStrut(5));
+                    perBagPanel.setBackground(Color.gray);
+                    perBagBox.add(perBagPanel);
+                    bagBoxArrayList.add(perBagBox);
+                    for (int i = 0; i < bagBoxArrayList.size(); i++) {
+                        bagBox.add(bagBoxArrayList.get(i));
+                        bagBox.add(Box.createVerticalStrut(5));
+                    }
+                    //mainListPanel.add(listBox);
+                    mainBagPanel.add(bagBox);
+
+
+                    //set in
+                    mainBox.add(firstLine);
+                    mContBox.add(mainListPanel);
+                    //mContBox.add(Box.createHorizontalStrut(10));
+                    mContBox.add(mainBagPanel);
+                    mainBox.add(mContBox);
+
 
                 }
             });
@@ -94,7 +125,7 @@ public class RunGUI {
         }
 
         //bag
-        bagBox.add(bagLabel);
+/*        bagBox.add(bagLabel);
         for (int i = 0; i < bag.getShoppingBag().size(); i++) {
             Box perBagBox = Box.createHorizontalBox();
             JPanel perBagPanel = new JPanel();
@@ -118,27 +149,22 @@ public class RunGUI {
         }for (int i = 0; i < bagBoxArrayList.size(); i++) {
             bagBox.add(bagBoxArrayList.get(i));
             bagBox.add(Box.createVerticalStrut(5));
-        }
+        }*/
 
-
-
-
-
-
-
+        bagBox.add(bagLabel);
         mainListPanel.add(listBox);
         mainBagPanel.add(bagBox);
 
 
         //set in
-        mainBox.add(Box.createVerticalStrut(10));
+        //mainBox.add(Box.createVerticalStrut(10));
         mainBox.add(firstLine);
         mContBox.add(mainListPanel);
-        mContBox.add(Box.createHorizontalStrut(10));
+        //mContBox.add(Box.createHorizontalStrut(10));
         mContBox.add(mainBagPanel);
         mainBox.add(mContBox);
         frame.add(mainBox);
-        frame.setBounds(200,200,1200,500);
+        frame.setBounds(200,200,1000,500);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

@@ -47,7 +47,7 @@ public class Bag {
         for (int i = 0; i < shoppingBag.size(); i++) {
             sb.append(i+1);
             sb.append(shoppingBag.get(i).toString());
-            sb.append("\n");
+            //sb.append("\n");
         }
         return sb.toString();
     }

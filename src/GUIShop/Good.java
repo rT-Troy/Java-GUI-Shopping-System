@@ -30,7 +30,7 @@ public class Good {
         return gCategory;
     }
 
-    @Override
+/*    @Override
     public String toString() {
         return "Good{" +
                 "gId=" + gId +
@@ -38,5 +38,5 @@ public class Good {
                 ", gPrice=" + gPrice +
                 ", gCategory='" + gCategory + '\'' +
                 '}';
-    }
+    }*/
 }

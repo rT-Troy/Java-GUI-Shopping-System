@@ -60,7 +60,7 @@ public class GoodList {
         StringBuffer sb = new StringBuffer();
         for (Good good : goodList) {
             sb.append(good);
-            sb.append("\n");
+            //sb.append("\n");
         }
         return sb.toString();
     }
