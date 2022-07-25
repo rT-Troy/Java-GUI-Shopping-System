@@ -96,8 +96,11 @@ public class RunGUI {
                     perBagPanel.add(priceLabel);
                     perBagPanel.add(Box.createHorizontalStrut(5));
                     perBagPanel.setBackground(Color.gray);
-
-                    //po.setText(allGoods.getGoodList().get(Integer.parseInt(perListPanel.getName())).getgName());
+                    perBagBox.add(perBagPanel);
+                    bagBoxArrayList.add(perBagBox);
+                    po.setText(allGoods.getGoodList().get(Integer.parseInt(perListPanel.getName())).getgName());
+                    bagBox.add(bagBoxArrayList.get(bagBoxArrayList.size()-1));
+                    bagBox.add(Box.createVerticalStrut(5));
                 }
             });
         }for (int i = 0; i < listBoxArrayList.size(); i++) {
@@ -105,15 +108,14 @@ public class RunGUI {
             listBox.add(Box.createVerticalStrut(5));
         }
 
-        perBagBox.add(perBagPanel);
-        bagBoxArrayList.add(perBagBox);
+
+
+        perBagBox.add(po);
+        bagBox.add(perBagBox);
         for (int i = 0; i < bagBoxArrayList.size(); i++) {
             bagBox.add(bagBoxArrayList.get(i));
             bagBox.add(Box.createVerticalStrut(5));
         }
-
-        perBagBox.add(po);
-        bagBox.add(perBagBox);
         mainListPanel.add(listBox);
         mainBagPanel.add(bagBox);
 
