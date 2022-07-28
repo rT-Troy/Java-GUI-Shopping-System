@@ -16,7 +16,10 @@ public class RunGUI {
         Good good = null;
         boolean getFirst = false;
         boolean finish = false;
-        allGoods.readFile("/Users/troy/Desktop/Shopping_System/src/ComShop/goods.csv");
+        //read file for macOS
+        //allGoods.readFile("/Users/troy/Desktop/Shopping_System/src/ComShop/goods.csv");
+        //read file for pc
+        allGoods.readFile("C:\\Users\\18111\\Desktop\\Shopping_System\\src\\GUIShop\\goods.csv");
 
         Box firstLine = Box.createHorizontalBox();
 
