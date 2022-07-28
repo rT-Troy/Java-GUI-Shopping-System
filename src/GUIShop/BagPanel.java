@@ -1,4 +1,8 @@
 package GUIShop;
 
-//public class BagPanel extends MainGUI {
-//}
+import javax.swing.*;
+
+public class BagPanel {
+
+    private JPanel bagPanel;
+}

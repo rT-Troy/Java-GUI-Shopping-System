@@ -21,7 +21,7 @@ public class RunGUI {
         //read file for pc
         //allGoods.readFile("C:\\Users\\18111\\Desktop\\Shopping_System\\src\\GUIShop\\goods.csv");
 
-        new MainGUI(allGoods);
+        new MainGUI(allGoods,bag);
     }
 /*        ArrayList<Good> goodList = new ArrayList<Good>();
         GoodList allGoods = new GoodList(goodList);
