@@ -17,9 +17,23 @@ public class RunGUI {
         boolean getFirst = false;
         boolean finish = false;
         //read file for macOS
-        //allGoods.readFile("/Users/troy/Desktop/Shopping_System/src/ComShop/goods.csv");
+        allGoods.readFile("/Users/troy/Desktop/Shopping_System/src/ComShop/goods.csv");
         //read file for pc
-        allGoods.readFile("C:\\Users\\18111\\Desktop\\Shopping_System\\src\\GUIShop\\goods.csv");
+        //allGoods.readFile("C:\\Users\\18111\\Desktop\\Shopping_System\\src\\GUIShop\\goods.csv");
+
+        new MainGUI(allGoods);
+    }
+/*        ArrayList<Good> goodList = new ArrayList<Good>();
+        GoodList allGoods = new GoodList(goodList);
+        ArrayList<Good> bagList = new ArrayList<Good>();
+        Bag bag = new Bag(bagList);
+        Good good = null;
+        boolean getFirst = false;
+        boolean finish = false;
+        //read file for macOS
+        allGoods.readFile("/Users/troy/Desktop/Shopping_System/src/ComShop/goods.csv");
+        //read file for pc
+        //allGoods.readFile("C:\\Users\\18111\\Desktop\\Shopping_System\\src\\GUIShop\\goods.csv");
 
         Box firstLine = Box.createHorizontalBox();
 
@@ -128,7 +142,7 @@ public class RunGUI {
         }
 
         //bag
-/*        bagBox.add(bagLabel);
+*//*        bagBox.add(bagLabel);
         for (int i = 0; i < bag.getShoppingBag().size(); i++) {
             Box perBagBox = Box.createHorizontalBox();
             JPanel perBagPanel = new JPanel();
@@ -152,7 +166,7 @@ public class RunGUI {
         }for (int i = 0; i < bagBoxArrayList.size(); i++) {
             bagBox.add(bagBoxArrayList.get(i));
             bagBox.add(Box.createVerticalStrut(5));
-        }*/
+        }*//*
 
         bagBox.add(bagLabel);
         mainListPanel.add(listBox);
@@ -176,7 +190,7 @@ public class RunGUI {
         JTextField textField = new JTextField(20);
         textField.setMaximumSize(textField.getPreferredSize());
         return textField;
-    }
+    }*/
 
     public static void main(String[] args) {
         new RunGUI();
