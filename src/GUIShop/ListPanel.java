@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class ListPanel{
 
     private JPanel listPanel;
+    private Bag shopBag;
 
     public ListPanel(GoodList list,Bag bag){
         JPanel panel = new JPanel();
@@ -30,11 +31,11 @@ public class ListPanel{
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     //bag.addGood(perListArrayList);
-                    bag.addGood(new Good(list.getGoodList().get(ii).getgId(),
+                    shopBag.addGood(new Good(list.getGoodList().get(ii).getgId(),
                             list.getGoodList().get(ii).getgName(),
                             list.getGoodList().get(ii).getgPrice(),
                             list.getGoodList().get(ii).getgCategory()));
-                    feedBack.setText(bag.getShoppingBag().get(bag.getShoppingBag().size()-1).getgName()+" added to bag successful!");
+                    feedBack.setText(shopBag.getShoppingBag().get(shopBag.getShoppingBag().size()-1).getgName()+" added to bag successful!");
                 }
             });
             perListPanel.setBackground(Color.lightGray);
@@ -49,9 +50,14 @@ public class ListPanel{
         listBox.add(feedBack);
         panel.add(listBox);
         listPanel = panel;
+        shopBag = bag;
     }
 
     public JPanel getListPanel() {
         return listPanel;
+    }
+
+    public Bag getShopBag() {
+        return shopBag;
     }
 }
