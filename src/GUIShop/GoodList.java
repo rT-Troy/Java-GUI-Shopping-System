@@ -43,25 +43,4 @@ public class GoodList {
             e.printStackTrace();
         }
     }
-
-    public Good search(String name) {
-        int n = -1;
-        for (int i = 0; i < goodList.size(); i++) {
-            if(goodList.get(i).getgName().equals(name)){
-                n = i;
-                break;
-            }
-        }
-        return goodList.get(n);
-    }
-
-    @Override
-    public String toString() {
-        StringBuffer sb = new StringBuffer();
-        for (Good good : goodList) {
-            sb.append(good);
-            //sb.append("\n");
-        }
-        return sb.toString();
-    }
 }

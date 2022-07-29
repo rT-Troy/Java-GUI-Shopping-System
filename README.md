@@ -1,5 +1,7 @@
 # The Simple Shopping System
-##  Archieved function:
+
+##
+###  Archieved function:
 
 1. List all goods
 2. search goods by category

@@ -29,14 +29,4 @@ public class Good {
     public String getgCategory() {
         return gCategory;
     }
-
-/*    @Override
-    public String toString() {
-        return "Good{" +
-                "gId=" + gId +
-                ", gName='" + gName + '\'' +
-                ", gPrice=" + gPrice +
-                ", gCategory='" + gCategory + '\'' +
-                '}';
-    }*/
 }
