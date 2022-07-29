@@ -30,12 +30,12 @@ public class ListPanel{
             addButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //bag.addGood(perListArrayList);
-                    shopBag.addGood(new Good(list.getGoodList().get(ii).getgId(),
+                    bag.addGood(new Good(list.getGoodList().get(ii).getgId(),
                             list.getGoodList().get(ii).getgName(),
                             list.getGoodList().get(ii).getgPrice(),
                             list.getGoodList().get(ii).getgCategory()));
-                    feedBack.setText(shopBag.getShoppingBag().get(shopBag.getShoppingBag().size()-1).getgName()+" added to bag successful!");
+                    feedBack.setText(bag.getShoppingBag().get(bag.getShoppingBag().size()-1).getgName()+" added to bag successful!");
+                    new MainGUI(list, bag);
                 }
             });
             perListPanel.setBackground(Color.lightGray);

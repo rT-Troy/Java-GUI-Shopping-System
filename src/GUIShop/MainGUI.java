@@ -3,14 +3,9 @@ package GUIShop;
 import javax.swing.*;
 
 public class MainGUI {
-    private JFrame mainFrame;
-    private GoodList goodList;
-    private Bag shopBag;
 
     public MainGUI(GoodList list,Bag bag){
-        goodList = list;
-        shopBag = bag;
-        mainFrame = new JFrame("Shopping System");
+        JFrame mainFrame = new JFrame("Shopping System");
         JPanel panel = new JPanel();
         Box mainBox = Box.createVerticalBox();
         Box firstLine = Box.createHorizontalBox();
@@ -45,7 +40,4 @@ public class MainGUI {
 
     }
 
-    public Bag getShopBag() {
-        return shopBag;
-    }
 }
