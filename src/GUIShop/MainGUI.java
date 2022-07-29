@@ -10,8 +10,7 @@ public class MainGUI {
         Box mainBox = Box.createVerticalBox();
         Box firstLine = Box.createHorizontalBox();
         Box contentBox = Box.createHorizontalBox();
-        Box listBox = Box.createVerticalBox();
-        Box bagBox = Box.createVerticalBox();
+
 
         ListPanel tlistPanel = new ListPanel(list,bag);
         bag = tlistPanel.getShopBag();
@@ -19,14 +18,11 @@ public class MainGUI {
         BagPanel tbagPanel = new BagPanel(bag);
         JPanel bagPanel = tbagPanel.getBagPanel();
 
-        listBox.add(listPanel);
-        listBox.add(Box.createHorizontalStrut(10));
-        listBox.add(bagPanel);
 
         firstLine.add(new JLabel("Welcome!"));
-        contentBox.add(listBox);
+        contentBox.add(listPanel);
         contentBox.add(Box.createHorizontalStrut(10));
-        contentBox.add(bagBox);
+        contentBox.add(bagPanel);
         mainBox.add(firstLine);
         mainBox.add(Box.createVerticalStrut(10));
         mainBox.add(contentBox);
