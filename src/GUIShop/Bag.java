@@ -33,11 +33,13 @@ public class Bag {
     }
 
     public void removeGood(Good good) {
-        String gName = good.getgName();
-        for (int i = 0; i < shoppingBag.size(); i++) {
-            if (shoppingBag.get(i).getgName().equals(gName));
+        shoppingBag.remove(findGoodNum(good));
+        count.remove(findGoodNum(good));
+    }
 
-        }
+    public void removeGood(int n) {
+        shoppingBag.remove(n);
+        count.remove(n);
     }
 
     //return -1 if not found

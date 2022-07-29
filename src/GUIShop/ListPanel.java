@@ -51,7 +51,6 @@ public class ListPanel{
                             list.getGoodList().get(ii).getgName(),
                             list.getGoodList().get(ii).getgPrice(),
                             list.getGoodList().get(ii).getgCategory()),num);
-                    //feedBack.setText(bag.getShoppingBag().get(bag.getShoppingBag().size()-1).getgName()+" added to bag successful!");
                     new MainGUI(list, bag);
                 }
             });

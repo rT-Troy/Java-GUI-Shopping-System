@@ -4,7 +4,12 @@ import javax.swing.*;
 
 public class MainGUI {
 
+    private GoodList goodlist;
+    private Bag shoppingBag;
+
     public MainGUI(GoodList list,Bag bag){
+        goodlist = list;
+        shoppingBag = bag;
         JFrame mainFrame = new JFrame("Shopping System");
         JPanel panel = new JPanel();
         Box mainBox = Box.createVerticalBox();
@@ -15,7 +20,7 @@ public class MainGUI {
         ListPanel tlistPanel = new ListPanel(list,bag);
         bag = tlistPanel.getShopBag();
         JPanel listPanel = tlistPanel.getListPanel();
-        BagPanel tbagPanel = new BagPanel(bag);
+        BagPanel tbagPanel = new BagPanel(list,bag);
         JPanel bagPanel = tbagPanel.getBagPanel();
 
 
@@ -36,4 +41,11 @@ public class MainGUI {
 
     }
 
+    public Bag getShoppingBag() {
+        return shoppingBag;
+    }
+
+    public GoodList getGoodlist() {
+        return goodlist;
+    }
 }
