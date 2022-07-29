@@ -51,6 +51,7 @@ public class ListPanel{
                             list.getGoodList().get(ii).getgName(),
                             list.getGoodList().get(ii).getgPrice(),
                             list.getGoodList().get(ii).getgCategory()),num);
+
                     new MainGUI(list, bag);
                 }
             });
