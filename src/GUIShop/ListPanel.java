@@ -25,6 +25,7 @@ public class ListPanel{
 
 
         for (int i = 0; i < list.getGoodList().size(); i++) {
+            num = 1;
             int ii = i;
             Box perListBox = Box.createHorizontalBox();
             JPanel perListPanel = new JPanel();
@@ -34,7 +35,6 @@ public class ListPanel{
             perListPanel.add(Box.createHorizontalStrut(5));
             perListPanel.add(new JLabel((list.getGoodList().get(i).getgPrice()+"$")));
             //spinner
-            int spinNum;
             perListPanel.add(spin);
             spin.addChangeListener(new ChangeListener() {
                 @Override
@@ -50,7 +50,7 @@ public class ListPanel{
                     bag.addGood(new Good(list.getGoodList().get(ii).getgId(),
                             list.getGoodList().get(ii).getgName(),
                             list.getGoodList().get(ii).getgPrice(),
-                            list.getGoodList().get(ii).getgCategory()));
+                            list.getGoodList().get(ii).getgCategory()),num);
                     //feedBack.setText(bag.getShoppingBag().get(bag.getShoppingBag().size()-1).getgName()+" added to bag successful!");
                     new MainGUI(list, bag);
                 }

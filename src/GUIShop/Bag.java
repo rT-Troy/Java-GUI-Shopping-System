@@ -5,51 +5,52 @@ import java.util.ArrayList;
 public class Bag {
 
     private ArrayList<Good> shoppingBag;
+    private ArrayList<Integer> count;
+    private int xx =0;
 
-    public Bag(ArrayList<Good> bag) {
+    public Bag(ArrayList<Good> bag,ArrayList<Integer> num) {
         shoppingBag = bag;
+        count = num;
     }
 
     public ArrayList<Good> getShoppingBag() {
         return shoppingBag;
     }
 
-    /**
-     * add good to bag
-     * @param good the good
-     */
-    public void addGood(Good good) {
-        shoppingBag.add(good);
+    public ArrayList<Integer> getCount() {
+        return count;
     }
 
-    /**
-     * delete good from bag by bag-list ID
-     * @param bagId bag-list ID
-     */
-    public void delGood(int bagId){
-        shoppingBag.remove(bagId-1);
-    }
 
-    /**
-     * get the total price
-     */
-    public void calculate() {
-        double total = 0.0;
-        for (Good good : shoppingBag) {
-            total += good.getgPrice();
+    public void addGood(Good good,int num) {
+
+        if (findGoodNum(good) == -1){
+            shoppingBag.add(good);
+            count.add(num);
+        }else{
+            count.set(findGoodNum(good),num+count.get(findGoodNum(good)));
         }
-        System.out.println("Total $" + total);
     }
 
-    @Override
-    public String toString() {
-        StringBuffer sb = new StringBuffer();
+    public void removeGood(Good good) {
+        String gName = good.getgName();
         for (int i = 0; i < shoppingBag.size(); i++) {
-            sb.append(i+1);
-            sb.append(shoppingBag.get(i).toString());
-            //sb.append("\n");
+            if (shoppingBag.get(i).getgName().equals(gName));
+
         }
-        return sb.toString();
+    }
+
+    //return -1 if not found
+    public int findGoodNum(Good good) {
+        int num = -1;
+        String gName = good.getgName();
+        for (int i = 0; i < shoppingBag.size(); i++) {
+            if (shoppingBag.get(i).getgName().equals(gName)) {
+                num = i;
+                break;
+            }
+        }
+        return num;
     }
 
 }

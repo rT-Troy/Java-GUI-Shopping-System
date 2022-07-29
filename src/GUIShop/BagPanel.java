@@ -2,8 +2,6 @@ package GUIShop;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class BagPanel {
@@ -24,6 +22,7 @@ public class BagPanel {
                 perBagPanel.add(new JLabel(bag.getShoppingBag().get(i).getgName()));
                 perBagPanel.add(Box.createHorizontalStrut(5));
                 perBagPanel.add(new JLabel((bag.getShoppingBag().get(i).getgPrice() + "$")));
+                perBagPanel.add(new JLabel("x"+bag.getCount().get(i)));
                 perBagPanel.setBackground(Color.blue);
                 perBagBox.add(perBagPanel);
                 perBagArrayList.add(perBagBox);

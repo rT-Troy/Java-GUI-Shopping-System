@@ -8,7 +8,8 @@ public class RunGUI {
         ArrayList<Good> goodList = new ArrayList<Good>();
         GoodList allGoods = new GoodList(goodList);
         ArrayList<Good> bagList = new ArrayList<Good>();
-        Bag bag = new Bag(bagList);
+        ArrayList<Integer> numList = new ArrayList<Integer>();
+        Bag bag = new Bag(bagList,numList);
 
         //read file for macOS or Windows
         allGoods.readFile("/Users/troy/Desktop/Shopping_System/src/ComShop/goods.csv");

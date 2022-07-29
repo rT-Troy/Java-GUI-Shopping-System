@@ -19,7 +19,7 @@ public class MainGUI {
         JPanel bagPanel = tbagPanel.getBagPanel();
 
 
-        firstLine.add(new JLabel("Welcome!"));
+        firstLine.add(new JLabel(String.valueOf(bag.getShoppingBag().size())));
         contentBox.add(listPanel);
         contentBox.add(Box.createHorizontalStrut(10));
         contentBox.add(bagPanel);
